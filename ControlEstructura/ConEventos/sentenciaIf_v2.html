@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentencia if básica V2 (evento)</title>
+</head>
+
+<body>
+    <h4>Setencia if básica V2 con un evento</h4>
+    <div style="display: flex; flex-direction: column; gap: 10px; width: 20%;">
+        <label>¿Cuántos años tienes?</label>
+        <input type="number" id="edad">
+        <input type="button" value="Enviar" id="enviar">
+        <input type="button" value="Borrar" id="borrar">
+    </div>
+    <br>
+    <div style="display: flex; flex-direction: row; gap: 5px; width: 30%;">
+        <p>Resultado: </p>
+        <input type="text" name="" id="resultado" disabled>
+    </div>
+
+    <script>
+        let comprobarEdad = document.querySelector("#edad");
+        let botonEnviar = document.querySelector("#enviar");
+        let verResultado = document.querySelector("#resultado");
+        let botonBorrar = document.querySelector("#borrar");
+
+        botonEnviar.addEventListener('click', function () {
+            if (comprobarEdad.value === "") {
+                comprobarEdad.style.borderColor = "red";
+                comprobarEdad.placeholder = "Tienes que introducir la edad por favor";
+                verResultado.style.borderColor = "";
+                verResultado.value = "";
+            } else {
+                let edad = parseInt(comprobarEdad.value);
+                if (edad <= 0) {
+                    comprobarEdad.style.borderColor = ""
+                    comprobarEdad.value = "";
+                    comprobarEdad.style.borderColor = "red";
+                    comprobarEdad.placeholder = "Aún no has nacido";
+                    verResultado.style.borderColor = "";
+                    verResultado.value = "";
+                } else if (edad >= 18) {
+                    comprobarEdad.style.borderColor = ""
+                    verResultado.value = "Eres mayor de edad, ¡Felicidades Campeón/a!!";
+                    verResultado.style.borderColor = "green";
+                    verResultado.style.width = "73%";
+                } else {
+                    comprobarEdad.style.borderColor = ""
+                    verResultado.value = "Niño/a, vete con tus papás!!";
+                    verResultado.style.borderColor = "coral";
+                    verResultado.style.width = "45%";
+                }
+            }
+        });
+
+        botonBorrar.addEventListener('click', function () {
+            comprobarEdad.style.borderColor = "";
+            comprobarEdad.style.value = "";
+            comprobarEdad.placeholder = "Introduzca la edad";
+            verResultado.style.borderColor = "";
+            verResultado.value = "";
+            verResultado.style.width = "";
+        });
+
+    </script>
+
+</body>
+
+</html>

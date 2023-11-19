@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probar con Swicth</title>
+</head>
+
+<body>
+    <h4>Instrucción Swicth</h4>
+    <div style="display: flex; flex-direction: column; gap: 10px; width: 20%;">
+        <label>¿Qué tiempo hace?</label>
+        <input type="number" placeholder="Introduzca el mes" id="mes">
+        <input type="button" value="Enviar" onclick="enviar()">
+        <input type="button" value="Borrar" onclick="borrar()">
+    </div>
+    <br>
+    <div style="display: flex; flex-direction: row; gap: 5px; width: 26%;">
+        <p>Resultado: </p>
+        <input type="text" id="resultado" disabled style="width: 80%;">
+    </div>
+
+    <script>
+        let comprobarMes = document.querySelector("#mes");
+        let mesResultado = document.querySelector("#resultado");
+        function enviar() {
+            if (comprobarMes.value === "") {
+                comprobarMes.style.borderColor = "red";
+                comprobarMes.placeholder = "Tienes que introducir el mes por favor";
+                mesResultado.style.borderColor = "";
+                mesResultado.style.backgroundColor = "";
+                mesResultado.value = "";
+            } else if (comprobarMes.value <= 12) {
+                mesResultado.style.color = "white";
+                comprobarMes.style.borderColor = "";
+                let mes = parseInt(comprobarMes.value);
+                if(mes<=0){
+                    borrar();
+                    alert(mes+" este mes no existe");
+                    return;
+                }
+                switch (mes) {
+                    case 1:
+                        mesResultado.style.borderColor = "blue";
+                        mesResultado.style.backgroundColor = "blue";
+                        mesResultado.value = "Enero: Es invierno y hace mucho frío";
+                        break;
+                    case 2:
+                        mesResultado.style.borderColor = "blue";
+                        mesResultado.style.backgroundColor = "blue";
+                        mesResultado.value = "Febrero: Es invierno y hace mucho frío";
+                        break;
+                    case 3:
+                        mesResultado.style.borderColor = "#48940D";
+                        mesResultado.style.backgroundColor = "#48940D";
+                        mesResultado.value = "Marzo: Es primavera y tengo alergia";
+                        break;
+                    case 4:
+                        mesResultado.style.borderColor = "#48940D";
+                        mesResultado.style.backgroundColor = "#48940D";
+                        mesResultado.value = "Abril: Es primavera y tengo alergia";
+                        break;
+                    case 5:
+                        mesResultado.style.borderColor = "#48940D";
+                        mesResultado.style.backgroundColor = "#48940D";
+                        mesResultado.value = "Mayo: Es primavera y tengo alergia";
+                        break;
+                    case 6:
+                        mesResultado.style.borderColor = "#ECA312";
+                        mesResultado.style.backgroundColor = "#ECA312";
+                        mesResultado.value = "Junio: Es verano y hace mucho calor";
+                        break;
+                    case 7:
+                        mesResultado.style.borderColor = "#ECA312";
+                        mesResultado.style.backgroundColor = "#ECA312";
+                        mesResultado.value = "Julio: Es verano y hace mucho calor";
+                        break;
+                    case 8:
+                        mesResultado.style.borderColor = "#ECA312";
+                        mesResultado.style.backgroundColor = "#ECA312";
+                        mesResultado.value = "Agosto: Es verano y hace mucho calor";
+                        break;
+                    case 9:
+                        mesResultado.style.borderColor = "#9ED9F1";
+                        mesResultado.style.backgroundColor = "#ECA312";
+                        mesResultado.value = "Septiembre: Es otoñio y hace fresquito";
+                        break;
+                    case 10:
+                        mesResultado.style.borderColor = "#9ED9F1";
+                        mesResultado.style.backgroundColor = "#ECA312";
+                        mesResultado.value = "Octubre: Es otoñio y hace fresquito";
+                        break;
+                    case 11:
+                        mesResultado.style.borderColor = "#9ED9F1";
+                        mesResultado.style.backgroundColor = "#ECA312";
+                        mesResultado.value = "Noviembre: Es otoñio y hace fresquito";
+                        break;
+                    case 12:
+                        mesResultado.style.borderColor = "blue";
+                        mesResultado.style.backgroundColor = "blue";
+                        mesResultado.value = "Diciembre: Es invierno y hace mucho frío";
+                        break;
+                    default:
+                        borrar();
+                        alert("Error, " + mes + " este mes no existe");
+                        break;
+                }
+            }
+        }
+
+
+        function borrar() {
+            comprobarMes.style.borderColor = "";
+            comprobarMes.placeholder = "Introduzca el mes";
+            comprobarMes.value = "";
+            mesResultado.style.borderColor = "";
+            mesResultado.style.backgroundColor = "";
+            mesResultado.value = "";
+        }
+
+
+    </script>
+</body>
+
+</html>

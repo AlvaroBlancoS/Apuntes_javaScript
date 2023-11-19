@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probar bucle For</title>
+</head>
+
+<body>
+    <h4>Bucle For</h4>
+    <div style="display: flex; flex-direction: column; gap: 10px; width: 20%;">
+        <label for="num">Tabla de multiplicación</label>
+        <input type="number" placeholder="Introduzca un número" id="num">
+        <input type="button" value="Enviar" onclick="enviar()">
+        <input type="button" value="Borrar" onclick="borrar()">
+    </div>
+    <br>
+    <div style="display: flex; flex-direction: row; gap: 5px; width: 26%;">
+        <p>Resultado: </p>
+        <div id="resultado">
+
+        </div>
+    </div>
+
+    <script>
+        let unNumero = document.querySelector("#num");
+        let verResultado = document.querySelector("#resultado");
+        function enviar() {
+            if (unNumero.value === "") {
+                unNumero.style.borderColor = "red";
+                unNumero.placeholder = "Por favor, introduzca el número";
+            } else {
+                let num = parseInt(unNumero.value);
+
+                if (num <= 0) {
+                    alert("ERROR: " + num + " no tiene sentido");
+                    return;
+                }
+                // Crear un elemento ul para la lista
+                let lista = document.createElement("ul");
+
+                for (let i = 1; i <= 10; i++) {
+                    // Crear un elemento li para cada entrada en la tabla de multiplicación
+                    let item = document.createElement("li");
+                    item.textContent = num + " x " + i + "=" + (num * i);
+                    // Agregar el elemento li a la lista ul
+                    lista.appendChild(item);
+                }
+
+                // Borrar el contenido anterior del resultado y mostrar la nueva lista
+                verResultado.innerHTML = "";
+                verResultado.appendChild(lista);
+                unNumero.style.borderColor = "";
+            }
+        }
+
+        function borrar() {
+            unNumero.value = "";
+            verResultado.innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>
