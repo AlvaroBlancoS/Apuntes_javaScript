@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <script>
+
+        function estilos(colorFondo, colorLetra, fuente, urlImage) {
+            const keyframesCSS = `
+             body{
+            background: ${colorFondo};
+            margin: 0;
+        }
+        .image{
+            justify-content: center;
+            align-items: center;
+            background-image: url(${urlImage});
+           width: 1000px;
+            height: 1000px;
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 10000%;
+            margin: 0 auto;
+            overflow: hidden;
+            background-size: cover;
+            -webkit-background-clip: text;
+            background-attachment: fixed;
+            -webkit-text-fill-color: rgb(255, 9, 9,0);
+        }
+        #cuadro{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #titulo{
+            color: ${colorLetra};
+            font-family: ${fuente};
+            font-size: 400%;
+            font-weight: bold;
+            justify-content:center;
+        }
+
+        /*Pantallas para tablets*/
+        @media screen and (min-width:768px) and (max-width:1023px) {
+            #titulo{
+                font-size: 300%;
+            }
+        }
+        /*Pantallas para teléfonos móviles*/
+        @media only screen and (max-width: 767px) {
+            #titulo{
+            font-size: 100%;
+            }
+  
+        }
+    `;
+            const style = document.createElement('style');
+            style.appendChild(document.createTextNode(keyframesCSS));
+            document.head.appendChild(style);
+        }
+
+        estilos("#433838", "red", "Verdana", "https://www.okchicas.com/wp-content/uploads/2020/10/los-modelos-mas-guapos-y-exitosos-del-2020-5.png");
+
+    </script>
+</head>
+
+<body>
+    <div id="cuadro">
+        <h2 id="titulo"></h2>
+        <div class="image">
+            <p id="paf"></p>
+        </div>
+    </div>
+    <script>
+        let agregarTitulo = document.getElementById("titulo").textContent = "!Feliz día de San Valentín!";
+        let parrafo = document.getElementById("paf");
+        let frase = "";
+        const num = 547;
+        for (let i = 0; i < num; i++) {
+            frase += "I Love You ";
+        }
+        parrafo.textContent = frase;
+    </script>
+</body>
+
+</html>
